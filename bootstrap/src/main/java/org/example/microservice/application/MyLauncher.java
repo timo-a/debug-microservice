@@ -1,13 +1,13 @@
-package org.example.microservice;
+package org.example.microservice.application;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TestfixturesApplication {
+public class MyLauncher {
 
     public static void main(String[] args) {
-        SpringApplication.run(TestfixturesApplication.class, args);
+        SpringApplication.run(MyLauncher.class, args);
     }
 
 }
