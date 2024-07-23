@@ -1,9 +1,9 @@
 package org.example.microservice.application.core.usecase;
 
 import lombok.RequiredArgsConstructor;
-import org.example.microservice.application.core.ports.in.QueryFoodPricePort;
 import org.example.microservice.application.core.ports.out.FetchPastaPort;
 import org.example.microservice.application.core.ports.out.FetchPizzaPort;
+import org.example.microservice.application.core.ports.in.QueryFoodPricePort;
 import org.springframework.stereotype.Component;
 
 @Component

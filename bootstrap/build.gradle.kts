@@ -17,6 +17,10 @@ repositories {
     mavenCentral()
 }
 
+springBoot {
+    mainClass = "org.example.microservice.application.MyLauncher"
+}
+
 dependencies {
     implementation(project(":application:core"))
     implementation(project(":application:adapter"))
