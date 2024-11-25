@@ -2,7 +2,7 @@ plugins {
     `java-library`
     id("org.springframework.boot") version "3.3.2"
     id("io.spring.dependency-management") version "1.1.6"
-    `java-test-fixtures`
+    id("java-test-fixtures")
     id("org.assertj.generator") version "1.1.0"
 }
 
@@ -16,9 +16,15 @@ tasks.named("compileTestFixturesJava") {
 sourceSets {
     main {
         assertJ {
-            // default: ${buildDir}/generated-srcs/${sourceSet.name}-test/java
             outputDir = file("src/testFixtures/java")
+        }
+    }
+}
 
+//necessary since assertj still uses javax instead of jakarta
+sourceSets {
+    main {
+        assertJ {
             templates {
                 classes {
                     val directory = "src/main/resources/assertj/templates"
@@ -39,6 +45,8 @@ dependencies {
 
     testFixturesApi("org.assertj:assertj-core:3.25.1")
     //testFixturesCompileOnly("org.junit.jupiter:junit-jupiter-api:5.8.1")
+
+    //necessary since assertj still uses javax instead of jakarta
     testFixturesImplementation("jakarta.annotation:jakarta.annotation-api:2.1.1")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
