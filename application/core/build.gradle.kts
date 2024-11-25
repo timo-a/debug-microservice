@@ -16,6 +16,10 @@ tasks.named("compileTestFixturesJava") {
 sourceSets {
     main {
         assertJ {
+            packages {
+                include("org.example.microservice.application.core.domain.test")
+            }
+
             outputDir = file("src/testFixtures/java")
         }
     }
