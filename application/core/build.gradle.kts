@@ -4,10 +4,18 @@ plugins {
     id("io.spring.dependency-management") version "1.1.6"
     id("java-test-fixtures")
     id("org.assertj.generator") version "1.1.0"
+    idea
 }
 
 repositories {
     mavenCentral()
+}
+
+idea {
+    module {
+        testSources.from(file("src/testFixtures/java"))
+        testResources.from(file("src/testFixtures/resources"))
+    }
 }
 
 tasks.named("compileTestFixturesJava") {
