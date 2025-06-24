@@ -18,14 +18,6 @@ sourceSets {
         assertJ {
             // default: ${buildDir}/generated-srcs/${sourceSet.name}-test/java
             outputDir = file("src/testFixtures/java")
-
-            templates {
-                classes {
-                    val directory = "src/main/resources/assertj/templates"
-                    assertionClass.file("$directory/_ins_custom_assertion_class_template.txt")
-                    entryPoints.assertions.file("$directory/_ins_standard_assertions_entry_point_class_template.txt")
-                }
-            }
         }
     }
 }
@@ -47,6 +39,14 @@ dependencies {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+buildscript {
+    configurations.all {
+        resolutionStrategy {
+            force("org.assertj:assertj-assertions-generator:3.0.0-M5")
+        }
+    }
 }
 
 tasks.bootJar {
